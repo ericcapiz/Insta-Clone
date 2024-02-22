@@ -14,7 +14,7 @@ import {
   UnlikeLogo,
 } from "../../assets/constants";
 
-const PostFooter = () => {
+const PostFooter = ({ username }) => {
   const [liked, setLiked] = useState(false);
   const [likes, setLikes] = useState(1000);
 
@@ -42,8 +42,8 @@ const PostFooter = () => {
         {likes} likes
       </Text>
       <Text fontSize={"sm"} fontWeight={700}>
-        Seto
-        <Text as={"span"} fontWeight={700}>
+        {username}
+        <Text as={"span"} ml={2} fontWeight={700}>
           Ready to duel
         </Text>
       </Text>
