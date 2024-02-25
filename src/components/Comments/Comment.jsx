@@ -20,3 +20,4 @@ const Comment = ({ createdAt, username, text, profilePic }) => {
 };
 
 export default Comment;
+//2hr 47min
