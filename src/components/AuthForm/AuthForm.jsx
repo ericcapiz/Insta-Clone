@@ -11,7 +11,7 @@ const AuthForm = ({ isSignup }) => {
       <Box border={"1px solid gray"} borderRadius={4} padding={5}>
         <VStack spacing={4}>
           <Image src="/logo.png" h={24} cursor={"pointer"} alt="InstaClone" />
-          {isLogin ? <Login /> : <Signup />}
+          {!isLogin ? <Login /> : <Signup />}
           <Flex
             alignItems={"center"}
             justifyContent={"center"}
@@ -31,14 +31,14 @@ const AuthForm = ({ isSignup }) => {
       <Box border={"1px solid grey"} borderRadius={4} padding={5}>
         <Flex alignItems={"center"} justifyContent={"center"}>
           <Box m={2} fontSize={14}>
-            {isLogin ? "Dont have an account?" : "Already have an account?"}
+            {!isLogin ? "Dont have an account?" : "Already have an account?"}
           </Box>
           <Box
             onClick={() => setIsLogin(!isLogin)}
             color={"blue.500"}
             cursor={"pointer"}
           >
-            {isLogin ? "Sign Up" : "Log In"}
+            {!isLogin ? "Sign Up" : "Log In"}
           </Box>
         </Flex>
       </Box>

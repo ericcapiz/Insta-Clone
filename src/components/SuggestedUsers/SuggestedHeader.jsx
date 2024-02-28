@@ -1,7 +1,11 @@
-import { Avatar, Flex, Link, Text } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom";
+import { Avatar, Button, Flex, Text } from "@chakra-ui/react";
+import useLogout from "../../hooks/useLogout";
+import useAuthStore from "../../store/authStore";
 
 const SuggestedHeader = () => {
+  const { handleLogout, isLoggingout } = useLogout();
+  const authUser = useAuthStore((state) => state.user);
+
   return (
     <Flex
       gap={4}
@@ -10,22 +14,28 @@ const SuggestedHeader = () => {
       justifyContent={"space-between"}
     >
       <Flex alignItems={"center"} gap={6}>
-        <Avatar gap={4} name="Seto" size={"lg"} src="/profilepic.png" />
+        <Avatar
+          gap={4}
+          size={"lg"}
+          src={authUser?.profilePicURL || "/profilepic.png"}
+        />
         <Text gap={4} fontSize={14} fontWeight={"bold"}>
-          Seto
+          {authUser?.username}
         </Text>
       </Flex>
-      <Link
-        as={RouterLink}
-        to={"/auth"}
+      <Button
+        size={"xs"}
+        background={"transparent"}
+        _hover={{ background: "transparent" }}
         fontSize={14}
         fontWeight={"medium"}
         color={"blue.400"}
-        style={{ textDecoration: "none" }}
         cursor={"pointer"}
+        isLoading={isLoggingout}
+        onClick={handleLogout}
       >
         Logout
-      </Link>
+      </Button>
     </Flex>
   );
 };

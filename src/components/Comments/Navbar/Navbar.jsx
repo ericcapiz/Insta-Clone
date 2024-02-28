@@ -16,12 +16,12 @@ const Navbar = () => {
           cursor={"pointer"}
         />
         <Flex gap={4}>
-          <Link to="/auth" state={{ isSignup: true }}>
+          <Link to="/auth" state={{ isSignup: false }}>
             <Button colorScheme={"blue"} size={"sm"}>
               Login
             </Button>
           </Link>
-          <Link to="/auth" state={{ isSignup: false }}>
+          <Link to="/auth" state={{ isSignup: true }}>
             <Button variant={"outline"} size={"sm"}>
               Signup
             </Button>
