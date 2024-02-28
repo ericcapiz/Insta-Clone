@@ -4,9 +4,8 @@ import Login from "./Login";
 import Signup from "./Signup";
 import GoogleAuth from "./GoogleAuth";
 
-const AuthForm = () => {
-  const [isLogin, setIsLogin] = useState(true);
-
+const AuthForm = ({ isSignup }) => {
+  const [isLogin, setIsLogin] = useState(isSignup);
   return (
     <>
       <Box border={"1px solid gray"} borderRadius={4} padding={5}>
