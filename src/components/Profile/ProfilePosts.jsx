@@ -18,7 +18,7 @@ const ProfilePosts = () => {
       columnGap={1}
     >
       {isLoading &&
-        [0, 1, 2, 3, 4, 5, 6].map((_, idx) => (
+        [0, 1, 2].map((_, idx) => (
           <VStack key={idx} alignItems={"flex-start"} gap={4}>
             <Skeleton w={"full"}>
               <Box h={"300px"}>ContentWrapped</Box>
