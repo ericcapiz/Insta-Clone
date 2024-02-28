@@ -78,7 +78,7 @@ const Signup = () => {
         colorScheme="blue"
         size={"sm"}
         fontSize={14}
-        // isLoading={loading}
+        isLoading={loading}
         onClick={() => signup(inputs)}
       >
         Sign Up
