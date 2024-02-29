@@ -25,7 +25,7 @@ const AuthForm = ({ isSignup }) => {
             </Text>
             <Box flex={2} h={"1px"} bg={"gray.400"} />
           </Flex>
-          <GoogleAuth />
+          <GoogleAuth prefix={isLogin ? "Sign Up" : "Log in"} />
         </VStack>
       </Box>
       <Box border={"1px solid grey"} borderRadius={4} padding={5}>
