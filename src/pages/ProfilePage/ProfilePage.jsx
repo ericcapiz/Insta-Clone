@@ -17,10 +17,9 @@ import { Link as RouterLink } from "react-router-dom";
 const ProfilePage = () => {
   const { username } = useParams();
   const { isLoading, userProfile } = useGetUserProfileByUsername(username);
-
   const userNotFound = !isLoading && !userProfile;
-  if (userNotFound) return <UserNotFound />;
-
+  if (userNotFound) return <UserNotFound username={username} />;
+  console.log("breezy", typeof username);
   return (
     <Container maxW="container.lg" py={5}>
       <Flex
@@ -75,16 +74,26 @@ const ProfileHeaderSkeleton = () => {
   );
 };
 
-const UserNotFound = () => {
+const UserNotFound = ({ username }) => {
   return (
-    <Flex flexDir="column" textAlign={"center"} mx={"auto"}>
-      <Text fontSize={"2xl"}>User Not Found</Text>
+    <Flex
+      flexDirection={"column"}
+      height={"100%"}
+      justifyContent={"center"}
+      textAlign={"center"}
+      mx={"auto"}
+    >
+      <Text fontSize={"5xl"}>
+        User Profile: {username.toUpperCase()} <br />
+        Does Not Exist
+      </Text>
       <Link
         as={RouterLink}
         to={"/"}
         color={"blue.500"}
         w={"max-content"}
         mx={"auto"}
+        fontSize={"3xl"}
       >
         Go home
       </Link>
