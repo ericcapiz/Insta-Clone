@@ -41,7 +41,6 @@ const EditProfile = ({ isOpen, onClose }) => {
       setSelectedFile(null);
       onClose();
       navigate(`/${inputs.username}`);
-      window.location.reload();
     } catch (error) {
       showToast("Error", error.message, "error");
     }
