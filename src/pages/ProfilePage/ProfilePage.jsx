@@ -19,7 +19,6 @@ const ProfilePage = () => {
   const { isLoading, userProfile } = useGetUserProfileByUsername(username);
   const userNotFound = !isLoading && !userProfile;
   if (userNotFound) return <UserNotFound username={username} />;
-  console.log("breezy", typeof username);
   return (
     <Container maxW="container.lg" py={5}>
       <Flex
