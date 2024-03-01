@@ -20,6 +20,7 @@ import useAuthStore from "../../store/authStore";
 import usePreviewImg from "../../hooks/usePreviewImg";
 import useEditProfile from "../../hooks/useEditProfile";
 import useShowToast from "../../hooks/useShowToast";
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = ({ isOpen, onClose }) => {
   const [inputs, setInputs] = useState({
@@ -32,12 +33,15 @@ const EditProfile = ({ isOpen, onClose }) => {
   const { handleImageChange, selectedFile, setSelectedFile } = usePreviewImg();
   const { isUpdating, editProfile } = useEditProfile();
   const showToast = useShowToast();
+  const navigate = useNavigate();
 
   const handleEditProfile = async () => {
     try {
       await editProfile(inputs, selectedFile);
       setSelectedFile(null);
       onClose();
+      navigate(`/${inputs.username}`);
+      window.location.reload();
     } catch (error) {
       showToast("Error", error.message, "error");
     }
