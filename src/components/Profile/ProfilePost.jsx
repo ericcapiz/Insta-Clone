@@ -27,7 +27,7 @@ import { deleteObject, ref } from "firebase/storage";
 import { firestore, storage } from "../../firebase/firebase";
 import { arrayRemove, deleteDoc, doc, updateDoc } from "firebase/firestore";
 import usePostStore from "../../store/postStore";
-// import Caption from "../Comment/Caption";
+import { timeAgo } from "../../utils/timeAgo";
 
 const ProfilePost = ({ post }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -152,6 +152,8 @@ const ProfilePost = ({ post }) => {
                     />
                     <Text fontSize={16}>
                       {userProfile.username}: {post.caption}
+                      <br />
+                      {timeAgo(post.createdAt)}
                     </Text>
                   </Flex>
                   {authUser?.uid === userProfile.uid && (
@@ -178,15 +180,12 @@ const ProfilePost = ({ post }) => {
                   maxH={"350px"}
                   overflowY={"auto"}
                 >
-                  <Comment
-                    createdAt="1d ago"
-                    username="Seto"
-                    profilePic="/profilepic.png"
-                    text={"White lightning attack!!!"}
-                  />
+                  {post.comments.map((comment) => (
+                    <Comment key={comment.id} comment={comment} />
+                  ))}
                 </VStack>
                 <Divider my={4} bg={"gray.800"} />
-                <PostFooter isProfilePage={true} />
+                <PostFooter post={post} isProfilePage={true} />
               </Flex>
             </Flex>
           </ModalBody>
