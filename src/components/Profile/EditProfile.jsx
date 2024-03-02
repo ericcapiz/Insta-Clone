@@ -59,7 +59,6 @@ const EditProfile = ({ isOpen, onClose }) => {
           <ModalHeader />
           <ModalCloseButton />
           <ModalBody>
-            {/* Container Flex */}
             <Flex bg={"black"}>
               <Stack
                 spacing={4}
