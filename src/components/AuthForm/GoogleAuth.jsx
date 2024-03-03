@@ -17,7 +17,7 @@ const GoogleAuth = ({ prefix }) => {
         showToast("Error", error.message, "error");
         return;
       }
-      const userRef = doc(firestore, "users", newUser.user.uid);
+      const userRef = doc(firestore, "users", newUser?.user?.uid);
       const userSnap = await getDoc(userRef);
 
       if (userSnap.exists()) {
@@ -26,10 +26,10 @@ const GoogleAuth = ({ prefix }) => {
         loginUser(userDoc);
       } else {
         const userDoc = {
-          uid: newUser.user.uid,
-          email: newUser.user.email,
-          username: newUser.user.email.split("@")[0],
-          fullName: newUser.user.displayName,
+          uid: newUser?.user.uid,
+          email: newUser?.user.email,
+          username: newUser?.user.email.split("@")[0],
+          fullName: newUser?.user.displayName,
           bio: "",
           profilePicURL: newUser.user.photoURL,
           followers: [],
@@ -47,17 +47,18 @@ const GoogleAuth = ({ prefix }) => {
   };
 
   return (
-    <Flex
-      alignItems={"center"}
-      justifyContent={"center"}
-      cursor={"pointer"}
-      onClick={handleGoogleAuth}
-    >
-      <Image src="/google.png" w={5} alt="Google logo" />
-      <Text mx="2" color={"blue.500"}>
-        {prefix} with Google
-      </Text>
-    </Flex>
+    <></>
+    // <Flex
+    //   alignItems={"center"}
+    //   justifyContent={"center"}
+    //   cursor={"pointer"}
+    //   onClick={handleGoogleAuth}
+    // >
+    //   <Image src="/google.png" w={5} alt="Google logo" />
+    //   <Text mx="2" color={"blue.500"}>
+    //     {prefix} with Google
+    //   </Text>
+    // </Flex>
   );
 };
 

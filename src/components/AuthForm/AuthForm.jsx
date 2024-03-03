@@ -12,7 +12,7 @@ const AuthForm = ({ isSignup }) => {
         <VStack spacing={4}>
           <Image src="/logo.png" h={24} cursor={"pointer"} alt="InstaClone" />
           {!isLogin ? <Login /> : <Signup />}
-          <Flex
+          {/* <Flex
             alignItems={"center"}
             justifyContent={"center"}
             my={4}
@@ -24,7 +24,7 @@ const AuthForm = ({ isSignup }) => {
               OR
             </Text>
             <Box flex={2} h={"1px"} bg={"gray.400"} />
-          </Flex>
+          </Flex> */}
           <GoogleAuth prefix={isLogin ? "Sign Up" : "Log in"} />
         </VStack>
       </Box>
